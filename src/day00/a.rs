@@ -1,9 +1,7 @@
-use std::fs::File;
-use std::io::{ self, BufRead };
-use std::path::Path;
 use std::collections::HashMap;
+use advent_of_code_2024::utils::util::read_lines;
 
-pub fn day_00() {
+pub fn run() {
     if let Ok(lines) = read_lines("./src/day00/input.txt") {
         let mut parsed_map: HashMap<String, Vec<u16>> = HashMap::new();
         for line in lines.flatten() {
@@ -33,16 +31,11 @@ pub fn day_00() {
     }
 }
 
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>> where P: AsRef<Path> {
-    let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
-}
-
 #[cfg(test)]
-mod days {
+mod runs {
     use super::*;
     #[test]
-    fn sda() {
-        day_00();
+    fn testinput() {
+        run();
     }
 }

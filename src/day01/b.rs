@@ -1,9 +1,8 @@
-use std::fs::File;
-use std::io::{ self, BufRead };
-use std::path::Path;
+use advent_of_code_2024::utils::util::read_lines;
 
-pub fn day_01() {
-    if let Ok(lines) = read_lines("./src/day01/testinput.txt") {
+pub fn run(input_path: &str) -> i32 {
+    let mut result: i32 = 0;
+    if let Ok(lines) = read_lines(input_path) {
         let mut left_v: Vec<i32> = Vec::new();
         let mut right_v: Vec<i32> = Vec::new();
         for line in lines.flatten() {
@@ -12,7 +11,6 @@ pub fn day_01() {
             left_v.push(*nums.first().unwrap());
             right_v.push(*nums.last().unwrap());
         }
-        let mut result: i32 = 0;
         for i in left_v {
             let newvec = right_v.to_vec();
             let mut counter: i32 = 0;
@@ -24,20 +22,20 @@ pub fn day_01() {
             result += i * counter;
         }
 
-        println!("result:{:?}", result);
+        println!("result: {:?}", result);
     }
-}
-
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>> where P: AsRef<Path> {
-    let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
+    result
 }
 
 #[cfg(test)]
-mod days {
+mod runs {
     use super::*;
     #[test]
-    fn sda() {
-        day_01();
+    fn input() {
+        assert_eq!(run("./src/day01/input.txt"), 19678534);
+    }
+    #[test]
+    fn testinput() {
+        assert_eq!(run("./src/day01/testinput.txt"), 31);
     }
 }
