@@ -1,5 +1,6 @@
 mod day00;
 use day00::a;
+mod day01;
 fn main() {
     println!("Hello, world!");
     a::day_00();
