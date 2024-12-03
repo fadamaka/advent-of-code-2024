@@ -13,13 +13,13 @@ pub fn run(input_path: &str) -> i32 {
             let mut neg = false;
             let mut poz = false;
             for n in 0..=nums.len() - 2 {
-                let mut negCount = 0;
-                let mut pozCount = 0;
-                let mut change = nums[n + 1] - nums[n];
+                let mut neg_count = 0;
+                let mut poz_count = 0;
+                let change = nums[n + 1] - nums[n];
                 if change > 0 {
-                    pozCount += 1;
+                    poz_count += 1;
                 } else {
-                    negCount += 1;
+                    neg_count += 1;
                 }
                 if n == 0 {
                     if change > 0 {
@@ -32,11 +32,11 @@ pub fn run(input_path: &str) -> i32 {
                     safe = false;
                     break;
                 }
-                if poz && negCount > 0 {
+                if poz && neg_count > 0 {
                     safe = false;
                     break;
                 }
-                if neg && pozCount > 0 {
+                if neg && poz_count > 0 {
                     safe = false;
                     break;
                 }

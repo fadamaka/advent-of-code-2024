@@ -12,16 +12,16 @@ pub fn run(input_path: &str) -> i32 {
             let mut safe = true;
             let mut neg = false;
             let mut poz = false;
-            let mut failedAt = 0;
+            let mut failed_at = 0;
             for n in 0..=nums.len() - 2 {
-                failedAt = n;
-                let mut negCount = 0;
-                let mut pozCount = 0;
-                let mut change = nums[n + 1] - nums[n];
+                failed_at = n;
+                let mut neg_count = 0;
+                let mut poz_count = 0;
+                let change = nums[n + 1] - nums[n];
                 if change > 0 {
-                    pozCount += 1;
+                    poz_count += 1;
                 } else {
-                    negCount += 1;
+                    neg_count += 1;
                 }
                 if n == 0 {
                     if change > 0 {
@@ -34,11 +34,11 @@ pub fn run(input_path: &str) -> i32 {
                     safe = false;
                     break;
                 }
-                if poz && negCount > 0 {
+                if poz && neg_count > 0 {
                     safe = false;
                     break;
                 }
-                if neg && pozCount > 0 {
+                if neg && poz_count > 0 {
                     safe = false;
                     break;
                 }
@@ -51,16 +51,16 @@ pub fn run(input_path: &str) -> i32 {
                 result += 1;
             } else {
                 let mut newvec = nums.to_vec();
-                newvec.remove(failedAt);
+                newvec.remove(failed_at);
                 if retry(newvec) {
                     result += 1;
                 } else {
                     let mut newvec = nums.to_vec();
-                    newvec.remove(failedAt + 1);
+                    newvec.remove(failed_at + 1);
                     if retry(newvec) {
                         result += 1;
                     } else {
-                        if failedAt == 1 {
+                        if failed_at == 1 {
                             let mut newvec = nums.to_vec();
                             newvec.remove(0);
                             if retry(newvec) {
@@ -81,13 +81,13 @@ fn retry(nums: Vec<i32>) -> bool {
     let mut neg = false;
     let mut poz = false;
     for n in 0..=nums.len() - 2 {
-        let mut negCount = 0;
-        let mut pozCount = 0;
-        let mut change = nums[n + 1] - nums[n];
+        let mut neg_count = 0;
+        let mut poz_count = 0;
+        let change = nums[n + 1] - nums[n];
         if change > 0 {
-            pozCount += 1;
+            poz_count += 1;
         } else {
-            negCount += 1;
+            neg_count += 1;
         }
         if n == 0 {
             if change > 0 {
@@ -100,11 +100,11 @@ fn retry(nums: Vec<i32>) -> bool {
             safe = false;
             break;
         }
-        if poz && negCount > 0 {
+        if poz && neg_count > 0 {
             safe = false;
             break;
         }
-        if neg && pozCount > 0 {
+        if neg && poz_count > 0 {
             safe = false;
             break;
         }
