@@ -29,12 +29,6 @@ pub fn run(input_path: &str) -> i64 {
                 .unwrap();
             result += do_or_not * value;
         }
-
-        // for line in lines.flatten() {
-        //     for hit in line.match_indices(&re).map(|x| x.1) {
-        //         println!("{}", hit);
-        //     }
-        // }
     }
     result
 }
