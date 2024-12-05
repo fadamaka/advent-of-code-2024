@@ -15,17 +15,14 @@ pub fn run(input_path: &str) -> i32 {
                     .collect::<Vec<_>>();
                 if !is_ordered(line.clone(), has_greater_index.clone(), has_lesser_index.clone()) {
                     v.sort_by(|a, b| {
-                        if has_greater_index.contains_key(a) {
-                            if has_greater_index.get(a).unwrap().contains(b) {
-                                return Ordering::Greater;
-                            }
+                        if
+                            has_greater_index.contains_key(a) &&
+                            has_greater_index.get(a).unwrap().contains(b)
+                        {
+                            return Ordering::Greater;
+                        } else {
+                            return Ordering::Less;
                         }
-                        if has_lesser_index.contains_key(a) {
-                            if has_lesser_index.get(a).unwrap().contains(b) {
-                                return Ordering::Less;
-                            }
-                        }
-                        Ordering::Equal
                     });
                     result += v.get((v.len() - 1) / 2).unwrap();
                 }
