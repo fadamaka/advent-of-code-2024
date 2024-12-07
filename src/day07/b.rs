@@ -9,23 +9,16 @@ pub fn run(input_path: &str) -> i64 {
         for line in lines.flatten() {
             let mut split = line.split(": ");
             let test_value = split.next().unwrap().parse::<i64>().unwrap();
-            let nums = split
+            let mut nums = split
                 .next()
                 .unwrap()
                 .split_whitespace()
                 .map(|x| x.parse::<i64>().unwrap())
                 .collect::<Vec<i64>>();
-            // print!("{:?}: ", test_value);
-            // for num in nums.clone() {
-            //     print!("{} ", num);
-            // }
-            // println!();
-            let mut nums_r = nums.clone();
-            nums_r.reverse();
-            if test_seq(nums_r, test_value, 0) {
+
+            nums.reverse();
+            if test_seq(nums, test_value, 0) {
                 result += test_value;
-            } else {
-                println!("{}", nums[0]);
             }
         }
     }
@@ -67,10 +60,10 @@ mod runs {
     }
     #[test]
     fn input() {
-        assert_eq!(run("./src/day07/input.txt"), 267566105056);
+        assert_eq!(run("./src/day07/input.txt"), 116094961956019);
     }
     #[test]
     fn test2() {
-        assert_eq!(run("./src/day07/test2.txt"), 116094961956019);
+        assert_eq!(run("./src/day07/test2.txt"), 0);
     }
 }
