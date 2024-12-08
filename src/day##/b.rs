@@ -15,10 +15,10 @@ mod runs {
     use super::*;
     #[test]
     fn testinput() {
-        assert_eq!(run("./src/day02/testinput.txt"), 0);
+        assert_eq!(run("./src/day##/testinput.txt"), 0);
     }
     #[test]
     fn input() {
-        assert_eq!(run("./src/day02/input.txt"), 0);
+        assert_eq!(run("./src/day##/input.txt"), 0);
     }
 }
