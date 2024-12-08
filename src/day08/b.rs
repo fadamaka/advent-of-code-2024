@@ -29,7 +29,7 @@ pub fn run(input_path: &str) -> HashSet<(i32, i32)> {
                 }
             }
         }
-        antennas.into_iter().for_each(|(k, v)| {
+        antennas.into_iter().for_each(|(_k, v)| {
             // if k == '#' {
             //     println!("{}: {:?}", k, v);
             // }

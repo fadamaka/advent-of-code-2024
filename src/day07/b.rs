@@ -1,7 +1,4 @@
-use std::collections::HashMap;
-
 use advent_of_code_2024::utils::util::read_lines;
-use itertools::Itertools;
 
 pub fn run(input_path: &str) -> i64 {
     let mut result: i64 = 0;
@@ -36,16 +33,18 @@ fn test_seq(nums: Vec<i64>, test_value: i64, start: usize) -> bool {
             }
         }
         if remainder % n == 0 {
-            return (
+            // prettier-ignore
+            return 
                 test_seq(nums.clone(), remainder / n, start + 1) ||
                 test_seq(nums.clone(), remainder - n, start + 1) ||
                 test_seq(nums.clone(), pt2, start + 1)
-            );
+            ;
         } else {
-            return (
+            // prettier-ignore
+            return 
                 test_seq(nums.clone(), remainder - n, start + 1) ||
                 test_seq(nums.clone(), pt2, start + 1)
-            );
+            ;
         }
     }
     remainder == nums[start]

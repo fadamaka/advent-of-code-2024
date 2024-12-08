@@ -20,7 +20,6 @@ pub fn run(input_path: &str) -> i64 {
             //     print!("{} ", num);
             // }
             // println!();
-            let mut possible = false;
 
             nums.reverse();
             if test_seq(nums, test_value, 0) {
@@ -36,10 +35,11 @@ fn test_seq(nums: Vec<i64>, test_value: i64, start: usize) -> bool {
     if remainder > 0 && start < nums.len() {
         let n = nums[start];
         if remainder % n == 0 {
-            return (
+            // prettier-ignore
+            return 
                 test_seq(nums.clone(), remainder / n, start + 1) ||
                 test_seq(nums.clone(), remainder - n, start + 1)
-            );
+            ;
         } else {
             return test_seq(nums.clone(), remainder - n, start + 1);
         }
