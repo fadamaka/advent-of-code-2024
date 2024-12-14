@@ -1,5 +1,3 @@
-use core::num;
-
 use advent_of_code_2024::utils::util::read_lines;
 use regex::Regex;
 
@@ -12,7 +10,6 @@ pub fn run(input_path: &str, x_c: i32, y_c: i32) -> i32 {
     let mut q3 = 0;
     let mut q4 = 0;
 
-    let mut result: i32 = 0;
     let re: Regex = Regex::new(r"-?\d+").unwrap();
     if let Ok(lines) = read_lines(input_path) {
         for line in lines.flatten() {

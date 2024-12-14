@@ -8,6 +8,7 @@ mod day06;
 mod day07;
 mod day08;
 mod day13;
+mod day14;
 fn main() {
     println!("Hello, Advent of Code!");
 }
