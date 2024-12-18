@@ -1,4 +1,4 @@
-use std::{ collections::HashSet, sync::Mutex };
+use std::sync::Mutex;
 use advent_of_code_2024::utils::util::read_lines;
 use itertools::Itertools;
 
