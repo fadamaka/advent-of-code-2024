@@ -1,8 +1,6 @@
 use advent_of_code_2024::utils::util::read_lines;
 use itertools::Itertools;
 
-use super::b;
-
 pub fn run(input_path: &str) -> String {
     let mut res_v: Vec<i32> = Vec::new();
     let mut a = 0;
