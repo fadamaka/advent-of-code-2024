@@ -44,8 +44,8 @@ fn solvable(towels: &HashSet<String>, design: String) -> bool {
 }
 
 fn get_global_hashmap() -> MutexGuard<'static, HashMap<String, i128>> {
-    static map: OnceLock<Mutex<HashMap<String, i128>>> = OnceLock::new();
-    map.get_or_init(|| Mutex::new(HashMap::new()))
+    static MAP: OnceLock<Mutex<HashMap<String, i128>>> = OnceLock::new();
+    MAP.get_or_init(|| Mutex::new(HashMap::new()))
         .lock()
         .expect("Let's hope the lock isn't poisoned")
 }
