@@ -119,17 +119,28 @@ fn print_matrix() {
     }
 }
 
+fn reset_state() {
+    *MATRIX.lock().unwrap() = Vec::new();
+    *PRIO_MATRIX.lock().unwrap() = Vec::new();
+    *VISITED_V.lock().unwrap() = Vec::new();
+    *GRID_SIZE.lock().unwrap() = 0;
+}
+
 #[cfg(test)]
 mod runs {
+    use serial_test::serial;
+
     use super::*;
     #[test]
     #[serial]
     fn testinput() {
         assert_eq!(run("./src/day20/testinput.txt"), 0);
+        reset_state();
     }
     #[test]
     #[serial]
     fn input() {
         assert_eq!(run("./src/day20/input.txt"), 1395);
+        reset_state();
     }
 }
