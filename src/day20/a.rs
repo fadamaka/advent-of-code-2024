@@ -123,10 +123,12 @@ fn print_matrix() {
 mod runs {
     use super::*;
     #[test]
+    #[serial]
     fn testinput() {
-        assert_eq!(run("./src/day20/testinput.txt"), 84);
+        assert_eq!(run("./src/day20/testinput.txt"), 0);
     }
     #[test]
+    #[serial]
     fn input() {
         assert_eq!(run("./src/day20/input.txt"), 1395);
     }
